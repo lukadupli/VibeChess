@@ -26,12 +26,14 @@ interface GameState {
   resign: (color: "w" | "b") => void;
 }
 
+const initialChess = new Chess();
+
 export const useGameStore = create<GameState>((set, get) => ({
-  chess: new Chess(),
-  fen: new Chess().fen(),
+  chess: initialChess,
+  fen: initialChess.fen(),
   history: [],
   moveIndex: -1,
-  gameStatus: "idle",
+  gameStatus: "playing",
   result: null,
   settings: DEFAULT_SETTINGS,
 

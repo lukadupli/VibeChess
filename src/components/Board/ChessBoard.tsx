@@ -1,8 +1,14 @@
-import { Chessboard } from "react-chessboard";
+import { Chessboard, ChessboardDnDProvider } from "react-chessboard";
 import type { Square, Piece, PromotionPieceOption } from "react-chessboard/dist/chessboard/types";
+import { TouchBackend } from "react-dnd-touch-backend";
 import { useGameStore } from "../../store/gameSlice";
 
 const BOARD_WIDTH = 560;
+
+// TouchBackend with enableMouseEvents uses pointer/mouse events instead of
+// HTML5 DnD — required because WKWebView (Tauri/macOS) doesn't fire HTML5
+// drag events reliably.
+const TOUCH_BACKEND_OPTIONS = { enableMouseEvents: true };
 
 function isPromotion(source: Square, target: Square, piece: Piece): boolean {
   return (
@@ -13,7 +19,7 @@ function isPromotion(source: Square, target: Square, piece: Piece): boolean {
 }
 
 export function ChessBoard() {
-  const { fen, gameStatus, makeMove } = useGameStore();
+  const { fen, makeMove } = useGameStore();
 
   function onPieceDrop(source: Square, target: Square): boolean {
     return makeMove(source, target);
@@ -30,14 +36,15 @@ export function ChessBoard() {
   }
 
   return (
-    <Chessboard
-      boardWidth={BOARD_WIDTH}
-      position={fen}
-      onPieceDrop={onPieceDrop}
-      onPromotionCheck={isPromotion}
-      onPromotionPieceSelect={onPromotionPieceSelect}
-      promotionDialogVariant="modal"
-      arePiecesDraggable={gameStatus === "playing"}
-    />
+    <ChessboardDnDProvider backend={TouchBackend} options={TOUCH_BACKEND_OPTIONS}>
+      <Chessboard
+        boardWidth={BOARD_WIDTH}
+        position={fen}
+        onPieceDrop={onPieceDrop}
+        onPromotionCheck={isPromotion}
+        onPromotionPieceSelect={onPromotionPieceSelect}
+        promotionDialogVariant="modal"
+      />
+    </ChessboardDnDProvider>
   );
 }
