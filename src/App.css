@@ -85,3 +85,94 @@ body {
 .btn-danger {
   background: #742a2a;
 }
+
+.btn-start {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  background: #2b6cb0;
+  font-size: 15px;
+}
+
+/* Clock */
+.clock {
+  width: 560px;
+  padding: 10px 16px;
+  background: #16213e;
+  border: 1px solid #2d3748;
+  border-radius: 6px;
+  font-size: 28px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: #94a3b8;
+  text-align: right;
+}
+
+.clock-active {
+  background: #1e3a5f;
+  border-color: #3b82f6;
+  color: #e2e8f0;
+}
+
+.clock-low {
+  color: #f87171;
+  border-color: #f87171;
+}
+
+/* New Game modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #16213e;
+  border: 1px solid #0f3460;
+  border-radius: 10px;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 320px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.tc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.tc-btn {
+  padding: 8px 12px;
+  border: 1px solid #2d3748;
+  border-radius: 6px;
+  background: #1a2744;
+  color: #94a3b8;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tc-btn:hover {
+  border-color: #3b82f6;
+  color: #e2e8f0;
+}
+
+.tc-btn-selected {
+  border-color: #3b82f6;
+  background: #1e3a5f;
+  color: #e2e8f0;
+  font-weight: 600;
+}
