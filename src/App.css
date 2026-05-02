@@ -176,3 +176,37 @@ body {
   color: #e2e8f0;
   font-weight: 600;
 }
+
+.custom-fields {
+  display: flex;
+  gap: 12px;
+}
+
+.custom-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: #94a3b8;
+  flex: 1;
+}
+
+.custom-input {
+  padding: 6px 8px;
+  border: 1px solid #2d3748;
+  border-radius: 6px;
+  background: #1a2744;
+  color: #e2e8f0;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+}
+
+.custom-input:focus {
+  border-color: #3b82f6;
+}
+
+.btn-start:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
